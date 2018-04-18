@@ -17,7 +17,7 @@
             })
             .state('app.user.dashboard', {
                 url: '',
-                templateUrl: 'user/navigation/user-sidebar.html'
+                templateUrl: 'user/dashboard/user-dashboard.html'
             });
     }
 })();
