@@ -20,8 +20,13 @@ body {
 }
 
 .main-container {
-    margin: 30px 0;
+    margin: 0;
 }
 
-/* S I D E B A R */
+/* bootstrap overrides */
 
+.container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
