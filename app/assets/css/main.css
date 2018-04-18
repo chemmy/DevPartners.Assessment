@@ -23,10 +23,18 @@ body {
     margin: 0;
 }
 
-/* bootstrap overrides */
+/* O V E R R I D E S */
+
+/* bootstrap */ 
 
 .container {
   margin: 0;
   padding: 0;
   width: 100%;
+}
+
+/* P A G E   S E C T I O N */
+
+.dpa-content .container-fluid {
+    margin-right: 50px;
 }
