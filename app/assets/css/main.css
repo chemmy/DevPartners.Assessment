@@ -16,6 +16,7 @@
 /* G L O B A L */
 
 body {
+    font-family: Lato-Regular;
     background: #F1F3FA;
 }
 
@@ -34,6 +35,10 @@ body {
 }
 
 /* P A G E   S E C T I O N */
+
+.dpa-content {
+    padding-left: 300px;
+}
 
 .dpa-content .container-fluid {
     margin-right: 50px;
