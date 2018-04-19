@@ -21,7 +21,9 @@
             })
             .state('app.user.assessment', {
                 url: '/assessment',
-                templateUrl: 'user/assessment/all-assessments.html'
+                templateUrl: 'user/assessment/all-assessments.html',
+                controller: 'UserAssessmentController',
+                controllerAs: 'vm'
             });
     }
 })();
