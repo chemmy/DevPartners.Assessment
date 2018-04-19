@@ -18,6 +18,10 @@
             .state('app.user.dashboard', {
                 url: '',
                 templateUrl: 'user/dashboard/user-dashboard.html'
+            })
+            .state('app.user.assessment', {
+                url: '/assessment',
+                templateUrl: 'user/assessment/all-assessments.html'
             });
     }
 })();

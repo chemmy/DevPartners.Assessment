@@ -1,0 +1,29 @@
+/* C U S T O M   TA B L E */
+
+.dpa-table {
+    width: 98%;
+}
+
+/* table header */
+
+.dpa-table-header {
+	background-color: #fff;
+    box-shadow: 0 0 10px #c4c0c0;
+    position: relative;
+    font-weight: bold;
+}
+
+thead.dpa-table-header>tr>th{
+    padding: 15px 10px;
+}
+
+/* table body */
+
+.dpa-table tbody tr td {
+    padding: 8px 10px;
+    border: 1px solid transparent;
+}
+
+.dpa-table tbody tr:last-child td {
+    border-bottom: 2px solid #f9f9f9;
+}
