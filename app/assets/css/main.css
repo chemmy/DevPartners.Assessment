@@ -38,8 +38,13 @@ body {
 
 .dpa-content {
     padding-left: 300px;
+    color: #686666;
 }
 
 .dpa-content .container-fluid {
     margin-right: 50px;
+}
+
+.page-content {
+    margin: 20px 50px;
 }
