@@ -1,0 +1,21 @@
+/* header */
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #d19b3d;
+    margin-bottom: 10px;
+}
+
+/* modal table */
+
+.modal-table tr>td:first-child {
+    width: 150px;
+    font-weight: bold;
+    padding: 3px 20px 3px 0;
+}
+
+.modal-table td {
+    vertical-align: top;
+}

@@ -1,0 +1,33 @@
+<div class="assessment-modal container-fluid">
+    <div class="modal-title">{{ vm.assessment.assessment_name }}</div>
+    <table class="modal-table">
+        <tbody>
+            <tr>
+                <td>Description:</td>
+                <td>{{ vm.assessment.description }}</td>
+            </tr>
+            <tr>
+                <td># of Questions:</td>
+                <td>{{ vm.assessment.questions_count }}</td>
+            </tr>
+            <tr>
+                <td>Date Created:</td>
+                <td>{{ vm.assessment.date_created }}</td>
+            </tr>
+            <tr>
+                <td>Deadline:</td>
+                <td>{{ vm.assessment.deadline }}</td>
+            </tr>
+            <tr ng-if="vm.assessment.date_submitted">
+                <td>Date submitted:</td>
+                <td>{{ vm.assessment.date_submitted }}</td>
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td><span class="dot status-{{vm.assessment.status | lowercase}}"></span>
+                    {{ vm.assessment.status }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
