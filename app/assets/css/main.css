@@ -16,12 +16,35 @@
 /* G L O B A L */
 
 body {
+    font-family: Lato-Regular;
     background: #F1F3FA;
 }
 
 .main-container {
-    margin: 30px 0;
+    margin: 0;
 }
 
-/* S I D E B A R */
+/* O V E R R I D E S */
 
+/* bootstrap */ 
+
+.container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* P A G E   S E C T I O N */
+
+.dpa-content {
+    padding-left: 300px;
+    color: #686666;
+}
+
+.dpa-content .container-fluid {
+    margin-right: 50px;
+}
+
+.page-content {
+    margin: 20px 50px;
+}

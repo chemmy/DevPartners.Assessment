@@ -6,6 +6,7 @@
             'app.core',
 
             /* feature areas */
+            'app.user',
         ])
         .config(config);
 

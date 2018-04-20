@@ -4,6 +4,7 @@
         /* angular modules */
 
         /* cross-application modules */
+        'block.exception',
 
         /* third party modules */
         'ui.router',

@@ -1,0 +1,12 @@
+
+/* modules */
+
+@import url('main.css');
+@import url('sidebar.css');
+@import url('dashboard.css');
+@import url('assessment.css');
+
+/* utilities */
+@import url('table.css');
+@import url('modal.css');
+
