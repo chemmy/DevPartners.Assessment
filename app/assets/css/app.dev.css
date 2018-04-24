@@ -3,6 +3,7 @@
 @import url('dashboard.css');
 @import url('assessment.css');
 @import url('questionnaire.css');
+@import url('settings.css');
 
 /* utilities */
 @import url('table.css');

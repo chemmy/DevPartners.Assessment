@@ -24,6 +24,12 @@
                 templateUrl: 'user/assessment/all-assessments.html',
                 controller: 'UserAssessmentController',
                 controllerAs: 'vm'
+            })
+            .state('app.user.settings', {
+                url: '/settings',
+                templateUrl: 'user/settings/user-settings.html',
+                controller: 'UserSettingsController',
+                controllerAs: 'vm'
             });
     }
 })();

@@ -26,6 +26,10 @@ body {
 
 /* O V E R R I D E S */
 
+a, span {
+    text-decoration: none;
+}
+
 /* bootstrap */ 
 
 .container {
@@ -39,7 +43,6 @@ body {
 textarea {
     resize: none;
 }
-
 
 /* P A G E   S E C T I O N */
 
@@ -56,9 +59,66 @@ textarea {
     margin: 20px 50px;
 }
 
+.content-title {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 20px 0; 
+}
+
 input.required {
     color: #e32;
     content: ' *';
     display:inline;
     color: red;
+}
+
+.dpa-panel {
+    background-color: #fff;
+    border-bottom: 0;
+    padding: 0;
+}
+
+.dpa-panel .panel-heading {
+    background-color: #fff;
+    border-bottom: 0;
+    margin: 0 40px;
+    padding: 30px 0;
+}
+
+.dpa-panel .panel-body{
+    padding: 30px 0;
+    margin: 0 40px;
+}
+
+.dpa-panel h4 {
+    color: #717272;
+    font-weight: 600;
+}
+
+/* F O R M S */
+
+.dpa-form .row div{
+    margin-bottom: 42px;
+}
+
+.dpa-form input {
+    height: 42px;
+}
+
+.dpa-form .btn {
+    line-height: 32px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.dpabtn-yellow {
+    background-color: #ffbb41;
+    border: 1px solid #f1b03d;
+    color: black;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.3);
+}
+
+.dpabtn-yellow:hover {
+    background-color: #f1b03d;
+    color: black;
 }

@@ -1,0 +1,57 @@
+<section id="user-settings">
+    <div class="content-title">Account Settings</div>
+    <div class="row">
+        <uib-accordion class="col-md-12" close-others="true">
+
+            <div uib-accordion-group class="panel-default dpa-panel" is-open="vm.status.isProfileOpen">
+                <uib-accordion-heading>
+                    YOUR PROFILE
+                    <i class="pull-right glyphicon" 
+                        ng-class="{'glyphicon-chevron-down': vm.status.isProfileOpen, 'glyphicon-chevron-right': !vm.status.isProfileOpen}"></i>
+                </uib-accordion-heading>
+
+                <div class="row">
+                    <div class="col-md-3 user-photo">
+                        <div class="edit-img dropdown-submenu" style="background-image:url('assets/img/temp/user-icon.png')">
+                            <div class="upload_hover" ng-click="vm.uploadImage()">
+                                <span class="upload_text"><i class="fa fa-camera"></i>
+                                    <br>Change you profile photo
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 dpa-form">
+                        <form name="formUserProfile" id="formUserProfile" role="form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="firstname" class="dpa-label">First Name</label>
+                                    <input type="text" name="firstname" class="form-control ep-text" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="middlename" class="dpa-label">Middle Name</label>
+                                    <input type="text" name="middlename" class="form-control ep-text" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="lastname" class="dpa-label">Last Name</label>
+                                    <input type="text" name="lastname" class="form-control ep-text" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="dpa-label">Email Address</label>
+                                    <input type="email" name="email" class="form-control ep-text" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-12 pull-right">
+                                    <a type="submit" class="btn dpabtn-yellow">Save Changes</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </uib-accordion>
+    </div>
+</section>
