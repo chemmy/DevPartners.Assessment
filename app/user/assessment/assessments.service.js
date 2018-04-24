@@ -8,7 +8,8 @@
     function UserAssessmentService($http, $filter, API, FORM_CONST, exception) {
         var services = {
             getAllUserAssessment: getAllUserAssessment,
-            getAssessmentQuestionnaire: getAssessmentQuestionnaire
+            getAssessmentQuestionnaire: getAssessmentQuestionnaire,
+            getAssessmentAnswers: getAssessmentAnswers
         }
         return services;
 
@@ -43,6 +44,24 @@
         
         // utilities
 
+        function getAssessmentAnswers(questionnaire) {
+            var answer = [];
+
+            for(var i=0;i<questionnaire.categories.length;i++){
+                var cat = questionnaire.categories[i];
+
+                for(var j=0;j<cat.questions.length;j++){
+                    var ans = cat.questions[j];
+                    answer
+                        .push({ 
+                            'question_id': ans.question_id,  
+                            'answer': ans.answer
+                        });
+                }
+            }
+
+            return answer;
+        }
         
     }
 })();

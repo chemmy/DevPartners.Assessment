@@ -35,6 +35,46 @@
             });
         }
 
+        function saveAssessmentAnswers() {
+            var data = {
+                "assessment_id": 1,
+                "user_id": "trial-user0001",
+                "date_submitted": Date.now(),
+                "assessment_answer": UserAssessmentService.getAssessmentAnswers(vm.questionnaire)
+            };
+
+            console.log(data);
+        }
+
+        // watches 
+
+        $scope.$watch('vm.pagination.currentPage + vm.pagination.numPerPage', function(){
+            getPageAssessments();
+        });
+
+        $scope.$watch('vm.questionnaireForm.$valid', function() {
+            if(vm.qstModalParams && vm.questionnaireForm){
+                vm.qstModalParams.buttons.done.setDisabled(vm.questionnaireForm.$invalid);
+            }
+        });
+
+        // utilities
+
+        function getPageAssessments(){
+            if(vm.assessments){
+                var begin = ((vm.pagination.currentPage - 1) * vm.pagination.numPerPage);
+                var end = begin + vm.pagination.numPerPage;
+                vm.pageAssessments = vm.assessments.slice(begin, end);
+            }
+        }
+
+        function orderByDeadline(assessment) {
+            var date = new Date(assessment.deadline);
+            return date;
+        }
+
+        // modal display
+
         function showAssessment(assessment) {
             vm.assessment = assessment;
 
@@ -72,74 +112,18 @@
                                 text: 'Done',
                                 btnClass: 'btn-warning',
                                 action: function(scope, button){
-                                    function getAssessmentAnswers() {
-                                        var answer = [];
-
-                                        for(var i=0;i<vm.questionnaire.categories.length;i++){
-                                            var cat = vm.questionnaire.categories[i];
-                                            for(var j=0;j<cat.questions.length;j++){
-                                                var ans = cat.questions[j];
-                                                answer
-                                                    .push({ 
-                                                        'question_id': ans.question_id,  
-                                                        'answer': ans.answer
-                                                    });
-                                            }
-                                        }
-                                        return answer;
-                                    }
-                                    
-                                    var data = {
-                                        "assessment_id": 1,
-                                        "user_id": "trial-user0001",
-                                        "date_submitted": Date.now(),
-                                        "assessment_answer": getAssessmentAnswers()
-                                    };
-
-                                    console.log(data);
+                                    saveAssessmentAnswers();
                                 }
                             },
                             cancel: {
                                 btnClass: 'btn-default',
-                                action: function(scope, button) {
-
-                                }
+                                action: function(scope, button) { }
                             }
                         }
                     };
                     
                     $ngConfirm(vm.qstModalParams);
                 });
-        }
-
-        // routing
-
-
-        // watches 
-
-        $scope.$watch('vm.pagination.currentPage + vm.pagination.numPerPage', function(){
-            getPageAssessments();
-        });
-
-        $scope.$watch('vm.questionnaireForm.$valid', function() {
-            if(vm.qstModalParams && vm.questionnaireForm){
-                vm.qstModalParams.buttons.done.setDisabled(vm.questionnaireForm.$invalid);
-            }
-        });
-
-        // utilities
-
-        function getPageAssessments(){
-            if(vm.assessments){
-                var begin = ((vm.pagination.currentPage - 1) * vm.pagination.numPerPage);
-                var end = begin + vm.pagination.numPerPage;
-                vm.pageAssessments = vm.assessments.slice(begin, end);
-            }
-        }
-
-        function orderByDeadline(assessment) {
-            var date = new Date(assessment.deadline);
-            return date;
         }
 
     }
