@@ -1,0 +1,59 @@
+<div class="dpa-modal assessment-modal qst-div container-fluid">
+    <div class="modal-title">{{ vm.assessment.assessment_name }}</div>
+
+    <form name="vm.questionnaireForm" class="form-horizontal">
+
+        <div class="qst-details">
+            <table class="modal-table">
+                <tbody>
+                    <tr>
+                        <td>Name:</td>
+                        <td>Yang Wenli</td>
+                    </tr>
+                    <tr>
+                        <td>Team:</td>
+                        <td>Free Planets Alliance</td>
+                    </tr>
+                    <tr>
+                        <td>Project:</td>
+                        <td>Iserlohn Fortress</td>
+                    </tr>
+                    <tr>
+                        <td>Manager:</td>
+                        <td>Job Truniht</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="qst-instructions">
+            <span class="dpa-label">Instructions:</span>
+            <span>{{ vm.questionnaire.instructions }}</span>
+        </div>
+
+        <div class="qst-questions">
+            <div ng-repeat="category in vm.questionnaire.categories" class="qst-category">
+                <div class="dpa-label">{{ category.category_name }}</div>
+                <ol>
+                    <li ng-repeat="question in category.questions">
+                        <div class="qst-question">{{ question.question }}</div>
+                        <div class="qst-options" ng-if="question.options">
+                            <label ng-repeat="option in question.options">
+                                <input type="radio" ng-value="{{option.option_value}}"
+                                    ng-checked="question.answer === option.option_value"
+                                    ng-model="question.answer" required>
+                                        {{ option.option_text }}
+                                </input>
+                            </label>
+                        </div>
+                        <div class="qst-options form-group" ng-if="!question.options">
+                            <textarea ng-model="question.answer" class="form-control" 
+                                rows="3" id="answer" required>
+                            </textarea>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </form>
+</div>

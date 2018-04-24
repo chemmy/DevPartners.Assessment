@@ -11,7 +11,7 @@
 /* modal table */
 
 .modal-table tr>td:first-child {
-    width: 150px;
+    width: 130px;
     font-weight: bold;
     padding: 3px 20px 3px 0;
 }
@@ -19,3 +19,5 @@
 .modal-table td {
     vertical-align: top;
 }
+
+/* modal form */

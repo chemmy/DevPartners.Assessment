@@ -34,6 +34,13 @@ body {
   width: 100%;
 }
 
+/* forms */
+
+textarea {
+    resize: none;
+}
+
+
 /* P A G E   S E C T I O N */
 
 .dpa-content {
@@ -47,4 +54,11 @@ body {
 
 .page-content {
     margin: 20px 50px;
+}
+
+input.required {
+    color: #e32;
+    content: ' *';
+    display:inline;
+    color: red;
 }

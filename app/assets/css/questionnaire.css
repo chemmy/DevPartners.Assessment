@@ -1,0 +1,51 @@
+.qst-div div {
+    margin: 10px 0;
+}
+
+.qst-details {
+    padding-bottom: 20px;
+}
+
+.qst-details .modal-table tr>td:first-child {
+    width: 100px;
+    padding: 1px 20px 1px 0;
+}
+
+.qst-details:after {
+    content: '';
+    width: 95%;
+    margin-top: 10px;
+    border-bottom: solid 2px #F1C40F;
+    position: absolute;
+}
+
+.qst-instructions .dpa-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.qst-questions .dpa-label {
+    font-weight: bold;
+    text-align: center
+}
+
+.qst-div div.qst-category {
+    margin: 30px 0;
+}
+
+.qst-questions ol {
+    padding-left: 15px;
+}
+
+.qst-options {
+    text-align: center;
+}
+
+.qst-options label {
+    font-weight: normal;
+    margin: 0 10px;
+}
+
+.qst-options label input {
+    margin-right: 5px;
+}
