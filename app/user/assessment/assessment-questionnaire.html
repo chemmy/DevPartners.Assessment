@@ -32,10 +32,10 @@
         </div>
 
         <div class="qst-questions">
-            <div ng-repeat="category in vm.questionnaire.categories" class="qst-category">
+            <div ng-repeat="category in vm.categories" class="qst-category">
                 <div class="dpa-label">{{ category.category_name }}</div>
                 <ol>
-                    <li ng-repeat="question in category.questions">
+                    <li ng-repeat=" question in vm.questionnaire.questions | filter: { category_id: category.category_id } ">
                         <div class="qst-question">{{ question.question }}</div>
                         <div class="qst-options" ng-if="question.options">
                             <label ng-repeat="option in question.options">

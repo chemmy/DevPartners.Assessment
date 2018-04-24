@@ -17,6 +17,7 @@
         vm.orderByDeadline = orderByDeadline;
         vm.showAssessment = showAssessment;
         vm.btnDoneParams = {};
+        vm.myVar = 'false';
 
         activate();
 
@@ -40,7 +41,7 @@
                 "assessment_id": 1,
                 "user_id": "trial-user0001",
                 "date_submitted": Date.now(),
-                "assessment_answer": UserAssessmentService.getAssessmentAnswers(vm.questionnaire)
+                "assessment_answer": UserAssessmentService.getAssessmentAnswers(vm.questionnaire.questions)
             };
 
             console.log(data);
@@ -98,10 +99,11 @@
             });
         }
 
-        function showQuestionnaire() {
+        function showQuestionnaire() {        
             UserAssessmentService.getAssessmentQuestionnaire(vm.assessment.assessment_id)
                 .then(function(data){
                     vm.questionnaire = data;
+                    vm.categories = UserAssessmentService.getQuestionnaireCategories(vm.questionnaire.questions);
                     vm.qstModalParams = {
                         title: '',
                         scope: $scope,
@@ -115,7 +117,8 @@
                                     saveAssessmentAnswers();
                                 }
                             },
-                            cancel: {
+                            close: {
+                                text: 'Cancel',
                                 btnClass: 'btn-default',
                                 action: function(scope, button) { }
                             }

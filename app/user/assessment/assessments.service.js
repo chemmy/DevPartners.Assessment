@@ -9,7 +9,8 @@
         var services = {
             getAllUserAssessment: getAllUserAssessment,
             getAssessmentQuestionnaire: getAssessmentQuestionnaire,
-            getAssessmentAnswers: getAssessmentAnswers
+            getAssessmentAnswers: getAssessmentAnswers,
+            getQuestionnaireCategories: getQuestionnaireCategories
         }
         return services;
 
@@ -28,7 +29,7 @@
         }
 
         function getAssessmentQuestionnaire(assessmentId) {
-            var url = API.END_POINT + "/questionnaires.txt";
+            var url = API.END_POINT + "/assessment-questionnaire.txt";
 
             return $http.get(url)
                 .then(function(response){
@@ -44,24 +45,40 @@
         
         // utilities
 
-        function getAssessmentAnswers(questionnaire) {
-            var answer = [];
+        function getAssessmentAnswers(questions) {
+            var answers = [];
 
-            for(var i=0;i<questionnaire.categories.length;i++){
-                var cat = questionnaire.categories[i];
-
-                for(var j=0;j<cat.questions.length;j++){
-                    var ans = cat.questions[j];
-                    answer
-                        .push({ 
-                            'question_id': ans.question_id,  
-                            'answer': ans.answer
-                        });
-                }
+            for(var i=0;i<questions.length;i++){
+                var qst = questions[i];
+                answers
+                    .push({ 
+                        'question_id': qst.question_id,  
+                        'answer': qst.answer
+                    });
             }
 
-            return answer;
+            return answers;
         }
         
+        function getQuestionnaireCategories(questions) {
+            var categories = [];
+
+            var unique = {};
+            for( var i in questions ){
+                var qst = questions[i];
+
+                if( typeof(unique[qst.category_id]) == "undefined" ){
+                    categories
+                        .push({
+                            'category_id': qst.category_id,
+                            'category_name': qst.category_name
+                        });
+                }
+                unique[qst.category_id] = 0;
+            }
+            
+            return categories;
+        }
+
     }
 })();
