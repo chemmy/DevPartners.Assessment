@@ -24,6 +24,12 @@
                 templateUrl: 'admin/employees/employees.html',
                 controller: 'EmployeesController',
                 controllerAs: 'vm'
+            })
+            .state('app.admin.assessment', {
+                url: '/assessments',
+                templateUrl: 'admin/assessments/assessments.html',
+                controller: 'AssessmentsController',
+                controllerAs: 'vm'
             });
     }
 
