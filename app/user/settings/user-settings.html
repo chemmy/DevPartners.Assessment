@@ -43,12 +43,44 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 col-sm-12 pull-right">
+                                <div class="col-md-3 col-sm-12 pull-right">
                                     <a type="submit" class="btn dpabtn-yellow">Save Changes</a>
                                 </div>
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+
+            <div uib-accordion-group class="panel-default dpa-panel" is-open="status.isPasswordOpen">
+                <uib-accordion-heading>
+                    CHANGE PASSWORD
+                    <i class="pull-right glyphicon" 
+                        ng-class="{'glyphicon-chevron-down': status.isPasswordOpen, 'glyphicon-chevron-right': !status.isPasswordOpen}"></i>
+                </uib-accordion-heading>
+
+                <div class="dpa-form">
+                    <form name="formUserPassword" id="formUserPassword" role="form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="currentPass" class="dpa-label">Current Password</label>
+                                <input type="password" name="currentPass" class="form-control ep-text" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="newPass" class="dpa-label">New Password</label>
+                                <input type="password" name="newPass" class="form-control ep-text" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="confirmPass" class="dpa-label">Confirm New Password</label>
+                                <input type="password" name="confirmPass" class="form-control ep-text" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 pull-right">
+                                <a type="submit" class="btn dpabtn-yellow">Save Changes</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
 

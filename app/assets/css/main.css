@@ -72,6 +72,10 @@ input.required {
     color: red;
 }
 
+.page-content .dpa-panel {
+    margin-bottom: 30px;
+}
+
 .dpa-panel {
     background-color: #fff;
     border-bottom: 0;
