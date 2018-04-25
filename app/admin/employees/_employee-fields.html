@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-4 user-photo">
+        <img class="profile-img" src="assets/img/temp/user-icon.png">
+    </div>
+    <div class="col-md-8">
+        <form name="formUserProfile" id="formUserProfile" class="dpa-modal-form" role="form">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="firstname" class="dpa-label">First Name</label>
+                    <input type="text" name="firstname" ng-model="vm.employee.firstname" 
+                        ng-disabled="vm.isShowOnly" class="form-control" required>
+                </div>
+                <div class="col-md-12">
+                    <label for="middlename" class="dpa-label">Middle Name</label>
+                    <input type="text" name="middlename" ng-model="vm.employee.middlename" 
+                        ng-disabled="vm.isShowOnly" class="form-control" required>
+                </div>
+                <div class="col-md-12">
+                    <label for="lastname" class="dpa-label">Last Name</label>
+                    <input type="text" name="lastname" ng-model="vm.employee.lastname" 
+                        ng-disabled="vm.isShowOnly" class="form-control" required>
+                </div>
+                <div class="col-md-12">
+                    <label for="email" class="dpa-label">Email Address</label>
+                    <input type="email" name="email" ng-model="vm.employee.email_address" 
+                        ng-disabled="vm.isShowOnly" class="form-control" required>
+                </div>
+                <div class="col-md-12">
+                    <label for="contactnum" class="dpa-label">Contact Number</label>
+                    <input type="text" name="contactnum" ng-model="vm.employee.contact_number" 
+                        ng-disabled="vm.isShowOnly" class="form-control" required>
+                </div>
+                <div class="col-md-12">
+                    <label for="lastname" class="dpa-label">Position</label>
+                    <select class="form-control" 
+                        ng-options="pos.position for pos in vm.empPositions"
+                        ng-model="vm.selectedPosition"
+                        ng-disabled="vm.isShowOnly">
+                    </select>  
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

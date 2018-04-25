@@ -33,6 +33,11 @@ thead.dpa-table-header>tr>th{
     cursor: pointer;
 }
 
+.dpa-table td.btn-tools{
+    width: 1%;
+    white-space: nowrap;
+}
+
 /* pagination */
 
 .page-pagination {

@@ -20,8 +20,10 @@
                 templateUrl: 'admin/dashboard/admin-dashboard.html'
             })
             .state('app.admin.employees', {
-                url: 'employees',
-                templateUrl: 'admin/employees/employees.html'
+                url: '/employees',
+                templateUrl: 'admin/employees/employees.html',
+                controller: 'EmployeesController',
+                controllerAs: 'vm'
             });
     }
 

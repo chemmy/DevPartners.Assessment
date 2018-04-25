@@ -1,0 +1,21 @@
+<div class="dpa-modal container-fluid">
+    <ng-include src="'admin/employees/_employee-fields.html'"></ng-include>
+
+    <div class="row table-responsive style-1 pre-scrollable">
+        <table class="dpa-table table table-striped">
+            <thead class="dpa-table-header">
+                <th>Name</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="assessment in vm.assessments | orderBy: ['-status']"
+                    ng-click="vm.showUserAssessment(assessment)">
+                    <td>{{ assessment.assessment_name }}</td>
+                    <td><span class="dot status-{{assessment.status | lowercase}}"></span>
+                        {{ assessment.status }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -42,6 +42,10 @@ a:focus {
   width: 100%;
 }
 
+.pre-scrollable {
+    max-height: 200px;
+}
+
 /* forms */
 
 textarea {
@@ -133,4 +137,14 @@ input.required {
 .dpabtn-yellow:hover {
     background-color: #f1b03d;
     color: black;
+}
+
+/* modal form */
+
+.dpa-modal-form {
+    margin: 20px 0;
+}
+
+.dpa-modal-form .row div{
+    margin-bottom: 10px;
 }

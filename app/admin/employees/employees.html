@@ -1,0 +1,41 @@
+<section id="page-employees">
+    <div class="content-title">Employees</div>
+
+    <div class="table-responsive style-1">
+        <table class="dpa-table table table-striped">
+            <thead class="dpa-table-header">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Position</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in vm.pageEmployees" ng-click="">
+                    <td ng-click="vm.showEmployee(employee)">{{ vm.getFullName(employee) }}</td>
+                    <td ng-click="vm.showEmployee(employee)">{{ employee.email_address }}</td>
+                    <td ng-click="vm.showEmployee(employee)">{{ employee.contact_number }}</td>
+                    <td ng-click="vm.showEmployee(employee)">{{ employee.position }}</td>
+                    <td class="btn-tools">
+                        <button ng-click="vm.showEdit(employee)" class="btn btn-success btn-xs row-btn">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button ng-click="vm.deleteEmployee(employee)" class="btn btn-danger btn-xs row-btn">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="page-pagination">
+            <ul uib-pagination total-items="vm.employees.length" 
+                ng-model="vm.pagination.currentPage" max-size="vm.pagination.maxSize"
+                boundary-links="true" force-ellipses="true"
+                previous-text="&lsaquo;" next-text="&rsaquo;" 
+                first-text="&laquo;" last-text="&raquo;"
+                class="pagination-md">
+            </ul>
+        </div>
+    </div>
+</section>
