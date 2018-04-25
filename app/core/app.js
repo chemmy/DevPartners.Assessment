@@ -7,6 +7,7 @@
 
             /* feature areas */
             'app.user',
+            'app.admin',
         ])
         .config(config);
 
