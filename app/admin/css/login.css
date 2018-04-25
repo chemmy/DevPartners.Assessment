@@ -1,0 +1,28 @@
+body{
+    color:dimgrey !important;
+}
+button{
+    display: block 
+}
+img{
+    width: 120px;
+    height: 120px;
+}
+h2{
+
+}
+.header-container{
+    background-color: #222 !important;
+}
+.navbar{
+    padding: 0% !important;
+}
+.btn{
+    background-color: rgb(243, 187, 44) !important;
+    border: none !important;
+}
+.content-title {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 20px 0;
+}

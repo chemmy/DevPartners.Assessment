@@ -6,7 +6,8 @@
             'app.core',
 
             /* feature areas */
-            'app.user',
+            'app.user','app.admin'
+            
         ])
         .config(config);
 
@@ -16,8 +17,8 @@
         $stateProvider
             .state('app', {
                 abstract: true,
-                url: '/',
-                template: '<ui-view />',
+                url: '/user',
+                template: '<ui-view/>',
             });
 
         $urlRouterProvider.otherwise('/');

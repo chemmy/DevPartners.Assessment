@@ -1,0 +1,62 @@
+profileUser{
+    margin:100% !important;
+}
+.panel-default>.panel-heading {
+    padding: -13px 15px !important;
+    width: 100% !important;
+   
+}
+.panel-default{
+    border-color: rgba(0,0,0,.0001) !important;
+}
+.panel{
+    width: fit-content !important;
+
+}
+.btn-sm{
+    width: 100% !important;
+    margin: 1px !important;
+}
+.row{
+    margin-right: 32px !important;
+    margin-left: 32px !important;
+}
+.userID{
+    margin: 0% !important;
+
+}
+.sidebar{
+    height: -webkit-fill-available !important;
+    background-color: rgb(49, 48, 48)
+}
+/* a{
+    color: beige !important;
+    background-color: transparent;
+} */
+a hover{
+    color: goldenrod !important;
+
+}
+@media screen and (ma-width: 768px){
+    .table.responsive-vertical > .table{
+        margin-bottom: 0% !important;
+        background-color: transparent !important;
+    }
+    .table.responsive-vertical > .table > .thead,
+    .table.responsive-vertical > .table > .tfoot{
+        display: none !important;
+
+    }
+    .table.responsive-vertical > .table > .tbody{
+        display: block !important;
+    }
+    .table.responsive-vertical > .table > .tbody > tr{
+        display: block !important;
+        margin-bottom: 1.6rem !important;
+    }
+    .table.responsive-vertical > .table > .tbody > tr > td{
+        vertical-align: middle !important;
+        text-align: right;
+    }
+
+}

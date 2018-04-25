@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html ng-app="BasicHttpAuthExample">
+<head>
+    <meta http-equiv="expires" content="0">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DevPartners | Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png">
+    <link href="css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/loginApp.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body ng-controller="loginCtrl" data-spy="scroll" data-target=".navbar" data-offset="50">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid header-container">
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    <img src="img/dp-logo.png" />
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-title">DevPartners | Admin Assessment System</div>
+        <hr>
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header text-center">Login to Admin Portal</div>
+            <div class="card-body" ng-controller="loginCtrl">
+                <form ng-submit="submit();" id="myLogin">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <i class="fa fa-key"></i>
+                        <input type="text" name="username" id="username" class="form-control" ng-model="emailaddress" required />
+                        <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <i class="fa fa-lock"></i>
+                        <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+                        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+                    </div>
+                    <div class="form-actions">
+                        <!-- <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" style="width:100%;" value="Sign Up"> -->
+                        <button type="submit" ng-disabled="form.$invalid" class="btn btn-danger" style="width:100%; margin-top:3%;">Login</button>
+                    </div>
+                </form>
+                <div class="text-center">
+                    <a class="d-block small" href="#">Forgot Password?</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Admin Registration</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form ng-submit="register();">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ng-model="registerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUser1">Username</label>
+                            <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" ng-model="registerUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword">Password</label>
+                            <input type="password" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" ng-model="registerPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-warning btn-lg btn-block">Register</button>
+                        <br>
+                        <div class="alert alert-danger" role="alert" ng-if="accountExist == true">
+                            <strong>Account already exist!</strong> Please try again
+                        </div>
+                        <div class="alert alert-danger" role="alert" ng-if="invalidPassword == true">
+                            <strong>Invalid Password!</strong> You must specify a password between 4 and 8 characters
+                        </div>
+                        <div class="alert alert-success" role="alert" ng-if="accountRegistered == true">
+                            <strong>Well done!</strong> You are successfully registered.
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

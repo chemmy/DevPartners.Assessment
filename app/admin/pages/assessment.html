@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="employee">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Devpartners | Admin Assessment System</title>
+
+    <link rel="icon" href="../img/favicon1.png">
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../style.css" rel="stylesheet">
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+</head>
+
+<body ng-controller="employeeCtrl">
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="home.html">Admin </a>
+            </div>
+            <form>
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <img src="../img/dp-logo.png" style="width:30%; margin-top: 10%; margin-left: 34%;">
+
+                            <li class="sidebar-search">
+                                <div class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Search..." ng-model="searchText">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+
+                            </li>
+                            <li>
+                                <a href="#" style="color: goldenrod !important;">
+                                    <i class="fa fa-user fa-fw" style="color:goldenrod !important;"></i> Admin
+                                    <span class="fa arrow"></span>
+                                </a>
+
+                                <ul class="nav nav-second-level">
+                                    <!-- <li>
+                                    <a href="#">Add Admin</a>
+                                </li> -->
+                                    <!-- <li>
+                                        <a href="#" ng-click="signOut();">
+                                            <span>
+                                                <i class="fa fa-sign-out" style="color: goldenrod !important;"></i>
+                                            </span>
+                                            <span style="color: goldenrod !important;">Sign-out</span>
+                                        </a>
+
+                                    </li> -->
+                                    <li>
+                                        <a href="home.html" ng-click="">
+                                            <span>
+                                                <i class="fa fa-user" style="color: goldenrod !important;"></i>
+                                            </span>
+                                            <span style="color: goldenrod !important;">Employee</span>
+                                        </a>
+
+                                    </li>
+                                    <li>
+                                        <a href="questions.html" ng-click="">
+                                            <span>
+                                                <i class="fa fa-question" style="color: goldenrod !important;"></i>
+                                            </span>
+                                            <span style="color: goldenrod !important;">Questions</span>
+                                        </a>
+
+                                    </li>
+                                    <li>
+                                        <a href="assessment.html" ng-click="">
+                                            <span>
+                                                <i class="fa fa-file" style="color: goldenrod !important;"></i>
+                                            </span>
+                                            <span style="color: goldenrod !important;">Assessment</span>
+                                        </a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a ng-click="signOut();">
+                                    <span>
+                                        <i class="fa fa-sign-out" style="color: goldenrod !important;"></i>
+                                    </span>
+                                    <span style="color: goldenrod !important;">Sign-out</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                </div>
+        </nav>
+
+        <div id="page-wrapper">
+
+
+            <div class="row ">
+                <div class="table-responsive">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel">
+                            <i class="fa fa-bar-chart-o fa-fw">
+                                <h4>List of Assessment</h4>
+                            </i>
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <h4>
+                                        <a data-toggle="modal" data-target="#myModalAssessment">
+                                            <i class="fa fa-plus-circle">add new</i>
+                                        </a>
+                                    </h4>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div>
+                                    <div class="table-responsive-vertical">
+                                        <table class="table-responsive-vertica table table-stripped table-hover ">
+                                            <thead>
+                                                <tr>
+                                                    <th ng-click="sort('userId')">Id</th>
+                                                    <th ng-click="sort('firstName')">Profile Name</th>
+                                                    <th>Skill Set</th>
+                                                    <th>Link to Resume</th>
+                                                    <th ng-click="sort('phone')">Contact #</th>
+                                                    <th ng-click="sort('email')">Email</th>
+                                                    <th ng-click="sort('submittedDate')">Submitted Date</th>
+                                                    <th ng-click="sort('status')">Status</th>
+                                                    <th ng-click="sort('statusDate')">Status Updated</th>
+                                                    <th>Actions</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr dir-paginate="result in resultAPI | orderBy:sortColumn | filter:searchText | itemsPerPage:pageSize track by $index">
+                                                    <td>{{result.userId}}</td>
+                                                    <td>{{result.firstName}} {{result.lastName}}</td>
+
+                                                    <td>
+                                                        <div ng-repeat="skillSet in result.userSkills track by $index">
+                                                            {{skillSet.skillName}}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <!-- <a href={{linkUrl}}{{result.userId}}{{result.filename}} download>{{result.filename}}</a> -->
+                                                        <a href ng-click="tempUrl(result.userId,result.filename) " download>{{result.filename}}</a>
+
+                                                    </td>
+                                                    <td>{{result.phone}}</td>
+                                                    <td>{{result.email}}</td>
+                                                    <td>{{result.submittedDate | date : "medium" }}</td>
+                                                    <td>{{result.status}}</td>
+                                                    <td>{{result.statusDate | date : "medium" }}</td>
+
+                                                    <td>
+                                                        <div>
+                                                            <!-- <button class="btn btn-info btn-sm" type="button" data-toggle="modal" data-target="#myModalEdit" ng-click="selectUser(result)">Edit</button> -->
+                                                            <button class="btn btn-danger btn-sm" type="button" data-toggle="modal" data-target="#myModalDelete" ng-click="selectUser(result)">Delete</button>
+                                                            <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#myModalView" ng-click="viewUser(result)">Assign</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="text-center">
+                                            <dir-pagination-controls></dir-pagination-controls>
+                                        </div>
+                                    </div>
+                                    <div id="myModalDelete" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title text-center" ng-model="editFirstname">Delete Applicant?</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="text-center">Are you sure you want to delete {{editFirstname}} {{editLastname}} ?
+                                                    </p>
+                                                    <div class="text-center">
+                                                        <button type="button" class="btn btn-danger btn-md" style="margin-top: 5%;" ng-click="deleteEmployee()">Yes</button>
+                                                        <button type="button" class="btn btn-success btn-md" data-dismiss="modal" style="margin-left:2%; margin-top: 5%;">No</button>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div id="myModalView" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title text-center" ng-model="viewFirstname">Assessment Information</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4 class="userID"> ID {{viewID}}</h4>
+                                                    <div>
+                                                        <img style="margin-left: 35%; width:30%" src="../img/temp/user-icon.png">
+                                                    </div>
+                                                    <div class="text-center table-responsive-vertical">
+
+                                                        <table class="table-responsive-vertical table table-hover table-striped">
+                                                            <thead>
+                                                                <th>Employee Name</th>
+                                                                <th>Date Submitted</th>
+                                                                <th>Status</th>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr dir-paginate="result in resultAPI | orderBy:sortColumn | filter:searchText | itemsPerPage:pageSize track by $index">
+                                                                    <td>{{result.firstName}} {{result.lastName}}</td>
+                                                                    <td>{{result.submittedDate | date : "medium" }}</td>
+                                                                    <td>{{result.status}}
+                                                                        <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#myModalEmployeeView" ng-click="viewUser(result)">View</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="myModalEmployeeView" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title text-center" ng-model="viewFirstname">Applicant Information</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5 class="userID"> ID {{viewID}}</h5>
+                                                    <div>
+                                                        <img style="margin-left: 35%; width:30%" src="../img/temp/user-icon.png">
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <h3>{{viewFirstname}} {{viewLastname}}</h3>
+                                                        <hr>
+                                                        <h5>Phone: {{viewPhone}}</h5>
+                                                        <h5>Address: {{viewAddress}}</h5>
+                                                        <h5>Email: {{viewEmail}}</h5>
+                                                        <h5>Applicant Status: {{viewStatus}}</h5>
+                                                        Skills:
+                                                        <h5 ng-repeat="skillSet in viewRecords">{{skillSet.skillName}}</h5>
+
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="myModalAssessment" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title text-center" ng-model="viewFirstname">Assessment</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Name:
+                                                    <input type="text" class="form-control"> Description:
+                                                    <textarea type="text" rows="5" class="form-control"> </textarea>
+
+
+                                                    <!--RADIO BUTTON-->
+                                                    <div class="text-center">
+                                                        <div class="radio-inline">
+                                                            <label>
+                                                                <input type="radio" name="optradio">Existing Questionaire</label>
+                                                        </div>
+                                                        <div class="radio-inline">
+                                                            <label>
+                                                                <input data-toggle="modal" data-target="#myModalInstruction" type="radio" name="optradio">Create New Questionaire</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="myModalExistingAssessment" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title text-center" ng-model="editFirstname">List of Questionaire</h4>
+                                                </div>
+                                                <div class="modal-body container-fluid">
+                                                    <div class="form-group">
+                                                        Question:
+                                                        <textarea type="text" rows="5" class="form-control"> </textarea>
+                                                        <select class="form-control sortby fa fa-caret-down pull-right" style="width: 100%; margin-top: 2%; height:50%;">
+                                                            <option value="">Category</option>
+                                                            <option value="Category1">Category1</option>
+                                                            <option value="Category2">Category2</option>
+                                                            <option value="Category3">Category3</option>
+                                                        </select>
+
+                                                        <select class="form-control sortby fa fa-caret-down pull-right" style="width: 100%; margin-top: 2%; height:50%;">
+                                                            <option value="">Option Group</option>
+                                                            <option value="Option Group1">Option Group1</option>
+                                                            <option value="Option Group2">Option Group2</option>
+                                                            <option value="Option Group3">Option Group3</option>
+                                                        </select>
+
+                                                    </div>
+
+                                                    <div class="form-group ">
+                                                        <div class="text-center">
+                                                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="saveUser(clickedUser);">Save & Close</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="myModalInstruction" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title text-center" ng-model="editFirstname">Questionaire instruction</h4>
+                                                </div>
+                                                <div class="modal-body container-fluid">
+                                                    <div class="form-group">
+                                                        <ul class="nav">
+                                                            <li>Lorem Ipsum DogDog Doremi.</li>
+                                                            <li>Lorem Ipsum DogDog Doremi.</li>
+                                                            <li>Lorem Ipsum DogDog Doremi.</li>
+                                                            <li>Lorem Ipsum DogDog Doremi.</li>
+                                                            <li>Lorem Ipsum DogDog Doremi.</li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="form-group ">
+                                                        <div class="text-center">
+                                                            <button type="button" data-toggle="modal" data-target="#myModalExistingAssessment" data-dismiss="modal" class="btn btn-default"
+                                                                ng-click="saveUser(clickedUser);">Add</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="myModalEdit" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title text-center" ng-model="editFirstname">Edit status on {{editFirstname}} {{editLastname}}</h4>
+                                                </div>
+                                                <div class="modal-body container-fluid">
+                                                    <div class="form-group">
+                                                        <label for="inputEmail3" class="col-sm-2 control-label">Status</label>
+                                                        <div class="col-sm-10">
+
+                                                            <select class="form-control" ng-model="editStatus">
+                                                                <option ng-repeat="resultStatus in statusAPI" ng-click="putUpdate(result.userId.status)">{{resultStatus.name}}</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="saveUser(clickedUser);">Save & Close</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../vendor/jquery/jquery.min.js"></script>
+
+
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
+        <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+        <script type="text/javascript" src="../js/angular.min.js"></script>
+        <script src="../dist/js/sb-admin-2.js"></script>
+        <script src="../js/employee.js"></script>
+        <script src="../js/dirPagination.js"></script>
+        <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+
+</body>
+
+</html>
