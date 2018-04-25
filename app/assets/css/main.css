@@ -30,6 +30,10 @@ a, span {
     text-decoration: none;
 }
 
+a:focus {
+    text-decoration: none;
+}
+
 /* bootstrap */ 
 
 .container {
@@ -97,6 +101,10 @@ input.required {
 .dpa-panel h4 {
     color: #717272;
     font-weight: 600;
+}
+
+.dpa-panel h4:hover a {
+    text-decoration: none;
 }
 
 /* F O R M S */
