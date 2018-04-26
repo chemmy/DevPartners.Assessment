@@ -25,9 +25,6 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-
 </head>
 
 <body ng-controller="employeeCtrl">
@@ -254,22 +251,20 @@
                                                     <h4 class="modal-title text-center" ng-model="viewFirstname">Applicant Information</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h5 class="userID"> ID {{viewID}}</h5>
+                                                    
                                                     <div>
                                                         <img style="margin-left: 35%; width:30%" src="../img/temp/user-icon.png">
                                                     </div>
                                                     <div class="text-center">
                                                         <h3>{{viewFirstname}} {{viewLastname}}</h3>
                                                         <hr>
+                                                        <h5>ID: {{viewID}}</h5>
                                                         <h5>Phone: {{viewPhone}}</h5>
                                                         <h5>Address: {{viewAddress}}</h5>
                                                         <h5>Email: {{viewEmail}}</h5>
                                                         <h5>Applicant Status: {{viewStatus}}</h5>
                                                         Skills:
                                                         <h5 ng-repeat="skillSet in viewRecords">{{skillSet.skillName}}</h5>
-
-
-
                                                     </div>
 
                                                 </div>

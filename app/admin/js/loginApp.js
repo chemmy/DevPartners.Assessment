@@ -1,12 +1,12 @@
 var app = angular.module('BasicHttpAuthExample', ['ngStorage']);
-app.controller('loginCtrl', function($scope,$localStorage,$sessionStorage,$http) {
+app.controller('loginCtrl', function ($scope, $localStorage, $sessionStorage, $http) {
     $scope.accountExist = false;
     $scope.accountRegistered = false;
     $scope.invalidPassword = false;
-    $scope.submit = function(){ 
-          $localStorage.username =$scope.emailaddress;
-          $localStorage.password =$scope.password;
-          $scope.checkLogin($localStorage.username, $localStorage.password);
+    $scope.submit = function () {
+        $localStorage.username = $scope.emailaddress;
+        $localStorage.password = $scope.password;
+        $scope.checkLogin($localStorage.username, $localStorage.password);
     }
     $scope.register = function () {
         var registerAdmin = { username: $scope.registerUsername, email: $scope.registerEmail, password: $scope.registerPassword };
@@ -22,7 +22,7 @@ app.controller('loginCtrl', function($scope,$localStorage,$sessionStorage,$http)
                 $scope.invalidPassword = false;
 
             }, function (error) {
-                
+
                 if (error.data.Username) {
                     $scope.invalidPassword = false;
                     $scope.accountExist = true;
@@ -31,19 +31,19 @@ app.controller('loginCtrl', function($scope,$localStorage,$sessionStorage,$http)
                     $scope.accountExist = false;
                     $scope.invalidPassword = true;
                 }
-               
+
             })
     }
-   
-    $scope.checkLogin = function(uname,pass){
+
+    $scope.checkLogin = function (uname, pass) {
         $http({
             method: 'POST',
-            data:{
+            data: {
                 "username": uname,
                 "password": pass
             },
             url: 'http://13.75.89.123:8081/pooling/api/Auth/login',
-            headers: {'Content-Type': 'application/json-patch+json','accept': 'application/json' },
+            headers: { 'Content-Type': 'application/json-patch+json', 'accept': 'application/json' },
         }).then(function (response) {
             $localStorage.tokenString = response.data.tokenString;
             window.location.href = "pages/home.html";
@@ -52,26 +52,11 @@ app.controller('loginCtrl', function($scope,$localStorage,$sessionStorage,$http)
             $localStorage.password = "";
             alert("Invalid email or password.")
         })
-}
+    }
 
-    // $scope.checkLogin = function (uname, pass) {
-    //     var userInfo = { username: uname, password: pass };
-    //     $http.post('http://13.75.89.123/pooling/api/Auth/login', userInfo,)
-    //     .then(
-    //         function (response) {
-    //             console.log(response.data.tokenString);
-    //             window.location.href = "index.html";
-    //         }, function (error) {
-    //             console.log(error.statusText);
-    //             $localStorage.username = "";
-    //             $localStorage.password = "";
-    //             alert("Invalid email or password.")
-    //         })
-    // }
-
-    $scope.isnOTEmpty = function(){
-        if($localStorage.username && $localStorage.password){
-            window.location.href ="pages/home.html";
+    $scope.isnOTEmpty = function () {
+        if ($localStorage.username && $localStorage.password) {
+            window.location.href = "pages/home.html";
         }
     }
     $scope.isnOTEmpty();

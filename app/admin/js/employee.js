@@ -8,27 +8,8 @@ app.controller('employeeCtrl', function ($scope, $http, $localStorage,
         $localStorage.username = "";
         $localStorage.password = "";
         location.reload();
-        // alert();
+    
     }
-
-    //   var me = $scope;
-    //   me.downloadVariable = function(data, filename) {
-    //       var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(me.complexVariable));
-    //       var downloader = document.createElement('a');
-
-    //       downloader.setAttribute('href', data);
-    //       downloader.setAttribute('download', filename);
-    //       downloader.click();
-    //   };
-
-    //   me.complexVariable = [
-    //     {
-    //       desc: "wow much complex"
-    //     }
-    //   ];
-
-
-
     $scope.getStatus = function () {
         $http({
             method: 'GET',
@@ -66,37 +47,11 @@ app.controller('employeeCtrl', function ($scope, $http, $localStorage,
                 $scope.records = userData.userSkills;
 
             });
-
-
-
-        // $scope.linkUrl = function(data){
-        //     $http({
-        //         method:'GET',
-        //         url:URL+"/DownloadFile?userId=",
-        //         headers: headers
-        //     }).then(function(data){              
-        //         let anchor = angular.element('<a/>');
-        //         anchor.attr({
-        //             href: 'data:text/plain;charset=utf-8,' + encodeURIComponent(data),
-        //             target: '_blank',
-        //             download: filename
-        //         })[0].click();
-        //     })
-        // }
-
         ////start
 
-        // $scope.linkUrl=function(){
-        //     $http({
-        //         method:'GET',
-        //         url:URL+"/DownloadFile?userId=",
-        //         headers: headers
-        //     }).then(function(userData){
-        //         download:$scope.linkUrl
-        //     })
-        // }
+  
         $scope.tempUrl = function (data, filename2) {
-            // let download = {'Content-Type': 'text/plain;charset=utf-8','accept': 'application/json','Authorization': 'Bearer' + tokenString};
+        
             let URL = 'http://13.75.89.123:8081/pooling/api/User';
 
             $http({
@@ -128,27 +83,6 @@ app.controller('employeeCtrl', function ($scope, $http, $localStorage,
                     console.log(ex);
                 }
             });
-
-
-
-            // $http({
-            //     method: 'GET',  
-            //     url: URL+"/DownloadFile?userId="+data,    
-            //     headers: headers,
-            //     // contentType: 'application/json',
-            //     // responseType: 'application/json'
-            //     // responseType: 'arraybuffer'
-            // }).then(function (response) {
-            //  console.log(response)
-            //     let anchor = angular.element('<a/>');
-            //     anchor.attr({
-            //         href: 'data:application/pdf;charset=utf-8,' + response.data,
-            //         target: '_blank',
-            //         download: filename
-            //     })[0].click();
-            // });
-
-
         }
 
         ////end
@@ -205,30 +139,8 @@ app.controller('employeeCtrl', function ($scope, $http, $localStorage,
             location.reload();
         })
 
-        // $http.delete('http://13.75.89.123/pooling/api/User/' + $scope.editID).then(function (response) {
-        //    console.log('Success');
-        //    location.reload();
-
-        // }, function () {
-        //     console.log('Failed');
-        // }); 
 
     }
-
-
-    // $scope.putUpdate =function(userId = 0){
-    //     $http.put('http://13.75.89.123/pooling/api/User/Status/38?status=Hired' + userId).then(function(response){
-    //         console.log('Status Change');
-    //         alert('Status Change');
-    //         location.reload();
-    //     }, function(){
-    //         console.log('Status Fail!');
-    //         alert('Status Fail!');
-    //     })
-    // }
-    // $scope.putUpdate();
-
-
 
 
 
