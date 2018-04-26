@@ -29,11 +29,11 @@
                         <td><span class="dot status-{{assessment.status | lowercase}}"></span>
                             {{ assessment.status }}
                         </td>
-                        <td class="btn-tools">
-                            <button ng-click="vm.showEdit(employee)" class="btn btn-success btn-xs row-btn">
+                        <td class="btn-tools" ng-click="$event.stopPropagation()">
+                            <button ng-click="vm.showEdit(assessment)" class="btn btn-success btn-xs row-btn">
                                 <i class="fa fa-pencil"></i>
                             </button>
-                            <button ng-click="vm.deleteEmployee(employee)" class="btn btn-danger btn-xs row-btn">
+                            <button ng-click="vm.deleteAssessment(assessment)" class="btn btn-danger btn-xs row-btn">
                                 <i class="fa fa-times"></i>
                             </button>
                         </td>

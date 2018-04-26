@@ -1,0 +1,51 @@
+<div class="assessment-modal container-fluid">
+    <div class="modal-title">{{ vm.assessment.assessment_name }}</div>
+    <div class="modal-detail">
+        <table class="modal-table">
+            <tbody>
+                <tr>
+                    <td>Description:</td>
+                    <td>{{ vm.assessment.description }}</td>
+                </tr>
+                <tr>
+                    <td># of Questions:</td>
+                    <td>{{ vm.assessment.questions_count }}</td>
+                </tr>
+                <tr>
+                    <td>Date Created:</td>
+                    <td>{{ vm.assessment.date_created }}</td>
+                </tr>
+                <tr>
+                    <td>Deadline:</td>
+                    <td>{{ vm.assessment.deadline }}</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td><span class="dot status-{{vm.assessment.status | lowercase}}"></span>
+                        {{ vm.assessment.status }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal-divider"></div>
+
+    <div class="row table-responsive pre-scrollable">
+        <table class="dpa-table table table-striped">
+            <thead class="dpa-table-header">
+                <th>Name</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in vm.employees | orderBy: ['status']"
+                    ng-click="vm.showUserAssessment(employee)">
+                    <td>{{ vm.getFullName(employee) }}</td>
+                    <td><span class="dot status-{{employee.status | lowercase}}"></span>
+                        {{ employee.status }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
