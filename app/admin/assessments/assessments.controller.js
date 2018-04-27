@@ -28,8 +28,6 @@
         vm.deleteAssessment = deleteAssessment;
         vm.showUserAssessment = showUserAssessment;
         vm.showQuestionnaire = showQuestionnaire;
-        vm.newQuestionnaire = newQuestionnaire;
-        vm.addQuestion = addQuestion;
         vm.getFullName = getFullName;
 
         activate();
@@ -229,67 +227,6 @@
                         btnClass: 'btn-warning',
                         action: function(scope, button){
                             console.log(vm.assessment);
-                        }
-                    }
-                }
-            });
-        }
-
-        function newQuestionnaire() {
-            vm.categories = {};
-            vm.questionnaire = {};
-
-            $ngConfirm({
-                title: '',
-                scope: $scope,
-                contentUrl: 'admin/assessments/questionnaire/questionnaire-add.html',
-                type: 'orange',
-                closeIcon: true,
-                escapeKey: true,
-                backgroundDismiss: true,
-                buttons: {
-                    btn: {
-                        text: 'Close',
-                        btnClass: 'btn-warning',
-                        action: function(scope, button){
-                            
-                        }
-                    }
-                }
-            });
-        }
-
-        vm.questions = [];
-        function addQuestion() {
-            vm.questionnaire.questions = [];
-            vm.categories = [];
-            vm.question = {};
-
-
-            vm.try = "Initial";
-
-            getAllQuestionCategories();
-            getOptionGroups();
-
-            $ngConfirm({
-                title: '',
-                scope: $scope,
-                contentUrl: 'admin/assessments/questionnaire/question-add.html',
-                type: 'orange',
-                closeIcon: true,
-                escapeKey: true,
-                backgroundDismiss: true,
-                buttons: {
-                    btn: {
-                        text: 'Add',
-                        btnClass: 'btn-warning',
-                        action: function(scope, button){
-                            vm.questions.push({
-                                "description": vm.question.description,
-                                "category": vm.question.category.category,
-                                "optiongroup": vm.question.optiongroup.description
-                            });
-                            console.log(vm.questions);
                         }
                     }
                 }
