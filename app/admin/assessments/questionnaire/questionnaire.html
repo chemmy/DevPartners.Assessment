@@ -1,0 +1,38 @@
+<div class="dpa-modal assessment-modal qst-div container-fluid">
+    <div class="modal-title">{{ vm.assessment.assessment_name }}</div>
+
+    <form name="vm.questionnaireForm" class="form-horizontal">
+
+        <div class="qst-instructions">
+            <span class="dpa-label">Instructions:</span>
+            <span>{{ vm.questionnaire.instructions }}</span>
+        </div>
+
+        <div class="qst-questions">
+            <fieldset  ng-disabled="true">
+                <div ng-repeat="category in vm.categories" class="qst-category">
+                    <div class="dpa-label">{{ category.category_name }}</div>
+                    <ol>
+                        <li ng-repeat=" question in vm.questionnaire.questions | filter: { category_id: category.category_id } ">
+                            <div class="qst-question">{{ question.question }}</div>
+                            <div class="qst-options" ng-if="question.options">
+                                <label ng-repeat="option in question.options">
+                                    <input type="radio" ng-value="{{option.option_value}}"
+                                        ng-checked="question.answer === option.option_value"
+                                        ng-model="question.answer" required>
+                                            {{ option.option_text }}
+                                    </input>
+                                </label>
+                            </div>
+                            <div class="qst-options form-group" ng-if="!question.options">
+                                <textarea ng-model="question.answer" class="form-control" 
+                                    rows="3" id="answer" required>
+                                </textarea>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+</div>

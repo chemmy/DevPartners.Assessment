@@ -1,5 +1,4 @@
 (function(){
-    'use strict'
 
     angular
         .module('app.user')
@@ -11,7 +10,11 @@
             getAllAssessments: getAllAssessments,
             getEmpAssessmentStatus: getEmpAssessmentStatus,
             getEmpAssessmentQuestionnaire: getEmpAssessmentQuestionnaire,
-            getQuestionnaireCategories: getQuestionnaireCategories
+            getQuestionnaireCategories: getQuestionnaireCategories,
+            getQuestionnaire: getQuestionnaire,
+            getQuestionnairesList: getQuestionnairesList,
+            getAllQuestionCategories: getAllQuestionCategories,
+            getOptionGroups: getOptionGroups
         }
         return services;
 
@@ -49,7 +52,55 @@
     
             return $http.get(url)
                 .then(function(response){
-                    return response.data.data;;
+                    return response.data.data;
+                })
+                .catch(function(error) {
+                    return exception.showError(FORM_CONST.API_FETCH_FAILED, error.data);
+                });
+        }
+
+        function getQuestionnairesList()  {
+            var url = API.END_POINT + "/questionnaire-list.txt";
+    
+            return $http.get(url)
+                .then(function(response){
+                    return response.data.data;
+                })
+                .catch(function(error) {
+                    return exception.showError(FORM_CONST.API_FETCH_FAILED, error.data);
+                });
+        }
+
+        function getQuestionnaire(questionnaireId) {
+            var url = API.END_POINT + "/assessment-questionnaire.txt";
+    
+            return $http.get(url)
+                .then(function(response){
+                    return response.data.data;
+                })
+                .catch(function(error) {
+                    return exception.showError(FORM_CONST.API_FETCH_FAILED, error.data);
+                });
+        }
+        
+        function getAllQuestionCategories() {
+            var url = API.END_POINT + "/categories-list.txt";
+    
+            return $http.get(url)
+                .then(function(response){
+                    return response.data.data;
+                })
+                .catch(function(error) {
+                    return exception.showError(FORM_CONST.API_FETCH_FAILED, error.data);
+                });
+        }
+        
+        function getOptionGroups() {
+            var url = API.END_POINT + "/option-groups-list.txt";
+    
+            return $http.get(url)
+                .then(function(response){
+                    return response.data.data;
                 })
                 .catch(function(error) {
                     return exception.showError(FORM_CONST.API_FETCH_FAILED, error.data);

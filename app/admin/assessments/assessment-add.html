@@ -1,0 +1,61 @@
+<div class="dpa-modal container-fluid">
+    <form name="formAssessment" id="formAssessment" class="dpa-modal-form" role="form">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="assessmentname" class="dpa-label">Assessment Name</label>
+                <input type="text" name="assessmentname" ng-model="vm.assessment.assessment_name" 
+                    ng-disabled="vm.isShowOnly" class="form-control" required>
+            </div>
+            <div class="col-md-12">
+                <label for="description" class="dpa-label">Description</label>
+                <textarea type="text" name="description" ng-model="vm.assessment.description" 
+                    ng-disabled="vm.isShowOnly" class="form-control" required />
+            </div>
+            <div class="col-md-8">
+                <label for="deadline" class="dpa-label">Deadline</label>
+                <p class="input-group">
+                    <input type="text" class="form-control" name="deadline" 
+                        uib-datepicker-popup="{{vm.date.format}}" 
+                        ng-model="vm.assessment.deadline"
+                        ng-disabled="vm.isShowOnly" is-open="vm.date.popupOpen" 
+                        datepicker-options="vm.date.options" close-text="Close" required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openDatePopup()">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <div class="row table-responsive pre-scrollable">
+            <div>
+                <a class="pointer-cursor" ng-click="vm.newQuestionnaire()">
+                    Create a questionnaire
+                </a> 
+                or <br/>
+                Select from list of questionnaires below:
+            </div>
+            
+            <table class="dpa-table table table-striped">
+                <thead class="dpa-table-header">
+                    <th></th>
+                    <th>Description</th>
+                    <th># of Questions</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="questionnaire in vm.questionnaires | orderBy: ['status']"
+                        ng-click="vm.showQuestionnaire(questionnaire)">
+                        <td><input type="radio" ng-model="vm.assessment.questionnaire_id" 
+                            ng-value="questionnaire.questionnaire_id" required>
+                        </input></td>
+                        <td>{{ questionnaire.description }}</td>
+                        <td>{{ questionnaire.questions_count }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
