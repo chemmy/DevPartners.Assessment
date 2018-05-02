@@ -1,6 +1,9 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="UserSidebarController as toolbar">
     <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-right">
+        <div class="nav-hamburger" ng-click="toolbar.showSidebar()">
+            <span class="fa fa-bars"></span>
+        </div>
+        <ul class="pull-right">
             <li><a ui-sref="app.user.settings" class="btn-out">
                 <span class="fa fa-cog"></span>Account Settings
             </a></li>

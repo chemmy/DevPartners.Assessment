@@ -1,9 +1,9 @@
-<div class="nav-side-menu style-1">
+<div ng-controller="UserSidebarController as sidebar" class="nav-side-menu style-1">
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
     
     <div class="menu-list">
         <div class="nav-brand">
-            <a href="#"><img src="assets/img/dp-logo.png"></a>
+            <a href="#"><img ng-src={{sidebar.logo}}></a>
         </div>
         <div class="nav-user">
             <img class="profile" src="assets/img/temp/user-icon.png">
