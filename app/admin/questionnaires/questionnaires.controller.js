@@ -16,6 +16,7 @@
         vm.isQuestionFldsValid = true;
         vm.addQuestionnaire = addQuestionnaire;     // functions
         vm.addQuestion = addQuestion;
+        vm.removeQuestion = removeQuestion;
 
         activate();
 
@@ -57,7 +58,16 @@
 
                 resetNewQuestionField();
             }
-            
+        }
+
+        function removeQuestion(question) {
+            var qst_idx = vm.questionnaire.questions.indexOf(question);
+            vm.questionnaire.questions.splice(qst_idx, 1);
+
+            if(!findCatInQuestionsArr(question.category_id)) {
+                var cat_idx = vm.categories.indexOf(findCategoryInArr(question.category_id));
+                vm.categories.splice(cat_idx, 1);
+            }
         }
 
 
@@ -96,6 +106,10 @@
 
         function findCategoryInArr(catId) {
             return $filter('filter')(vm.categories, {category_id: catId })[0]
+        }
+
+        function findCatInQuestionsArr(catId) {
+            return $filter('filter')(vm.questionnaire.questions, {category_id: catId })[0]
         }
 
         function resetNewQuestionField() {

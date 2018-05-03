@@ -51,7 +51,14 @@
                     <ol>
                         <li ng-repeat="question in vm.questionnaire.questions | 
                                 filter: { category_id: category.category_id } ">
-                            <div class="qst-question">{{ question.question }}</div>
+                            <div class="qst-question">
+                                <span class="pull-right">
+                                    <a class="pointer-cursor" ng-click="vm.removeQuestion(question)">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </span>
+                                {{ question.question }}
+                            </div>
                             <div class="qst-options" ng-if="question.options">
                                 <label ng-repeat="option in question.options">
                                     <input type="radio" ng-value="{{option.option_value}}"

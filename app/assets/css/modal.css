@@ -32,3 +32,10 @@
     font-weight: bold;
     width: 100%;
 }
+
+/* others */
+
+.dpa-modal .pre-scrollable {
+    margin: 0;
+    padding: 5px;
+}
