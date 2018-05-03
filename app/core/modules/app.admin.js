@@ -30,6 +30,12 @@
                 templateUrl: 'admin/assessments/assessments.html',
                 controller: 'AssessmentsController',
                 controllerAs: 'vm'
+            })
+            .state('app.admin.questionnaire', {
+                url: '/questionnaires',
+                templateUrl: 'admin/questionnaires/questionnaires.html',
+                controller: 'QuestionnairesController',
+                controllerAs: 'vm'
             });
     }
 

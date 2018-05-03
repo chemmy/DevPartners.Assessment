@@ -1,0 +1,46 @@
+<section id="page-questionnaire">
+    <div class="content-title">Questionnaire
+        <button class="btn dpabtn-yellow" ng-click="vm.addQuestionnaire()">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+    
+    <div class="group-assessment">
+        <div class="table-responsive style-1 ep-table-request">
+            <table class="dpa-table table table-striped">
+                <thead class="dpa-table-header">
+                    <th>Description</th>
+                    <th># of Questions</th>
+                    <th>Date Created</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="questionnaire in vm.pageQuestionnaires"
+                        ng-click="">
+                        <td>{{ questionnaire.description}}</td>
+                        <td>{{ questionnaire.questions_count }}</td>
+                        <td>{{ questionnaire.date_created | date}}</td>
+                        <td class="btn-tools" ng-click="$event.stopPropagation()">
+                            <button ng-click="" class="btn btn-success btn-xs row-btn">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button ng-click="" class="btn btn-danger btn-xs row-btn">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="page-pagination">
+                <ul uib-pagination total-items="vm.questionnaires.length" 
+                    ng-model="vm.pagination.currentPage" max-size="vm.pagination.maxSize"
+                    boundary-links="true" force-ellipses="true"
+                    previous-text="&lsaquo;" next-text="&rsaquo;" 
+                    first-text="&laquo;" last-text="&raquo;"
+                    class="pagination-md">
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

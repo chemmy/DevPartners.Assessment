@@ -1,0 +1,75 @@
+<div class="dpa-modal container-fluid">
+    <form name="formAssessment" id="formAssessment" class="dpa-modal-form" role="form">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="description" class="dpa-label">Description</label>
+                <textarea type="text" name="description" ng-model="vm.questionnaire.description" 
+                    class="form-control" required />
+            </div>
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label for="description" class="dpa-label">
+                    New Question
+                    <span class="dpa-field-error" ng-hide="vm.isQuestionFldsValid">
+                        *All fields are required.
+                    </span>
+                </label>
+                <textarea type="text" name="description" id="newquestion" ng-model="vm.question.description" 
+                    class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <select class="form-control" 
+                    ng-options="cat.category for cat in vm.qstCategories"
+                    ng-model="vm.question.selectedCategory" >
+                    <option value="" disabled selected>Category</option>
+                </select>  
+            </div>
+            <div class="col-md-6">
+                <select class="form-control" 
+                    ng-options="opt.description for opt in vm.qstOptionType"
+                    ng-model="vm.question.selectedOption" >
+                    <option value="" disabled selected>Option Type</option>
+                </select>  
+            </div>
+            <div class="col-md-4 pull-right">
+                <button class="btn dpabtn-yellow" ng-click="vm.addQuestion()">
+                    Add Question
+                </button>
+            </div>
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <div class="row pre-scrollable qst-questions">
+            <fieldset  ng-disabled="true">
+                <div ng-repeat="category in vm.categories" class="qst-category">
+                    <div class="dpa-label">{{ category.category }}</div>
+                    <ol>
+                        <li ng-repeat="question in vm.questionnaire.questions | 
+                                filter: { category_id: category.category_id } ">
+                            <div class="qst-question">{{ question.question }}</div>
+                            <div class="qst-options" ng-if="question.options">
+                                <label ng-repeat="option in question.options">
+                                    <input type="radio" ng-value="{{option.option_value}}"
+                                        ng-checked="question.answer === option.option_value"
+                                        ng-model="question.answer" required>
+                                            {{ option.option_text }}
+                                    </input>
+                                </label>
+                            </div>
+                            <div class="qst-options form-group" ng-if="!question.options">
+                                <textarea ng-model="question.answer" class="form-control" 
+                                    rows="3" id="answer" required>
+                                </textarea>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+</div>

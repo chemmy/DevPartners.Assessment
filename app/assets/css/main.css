@@ -159,3 +159,9 @@ input.required {
 .pointer-cursor {
     cursor: pointer;
 }
+
+.dpa-field-error {
+    color: red;
+    font-size: 10px;
+    font-style: italic;
+}

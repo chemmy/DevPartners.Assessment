@@ -27,3 +27,8 @@
     height: 3px;
     background-color: #ffbb41; 
 }
+
+.dpa-modal .btn {
+    font-weight: bold;
+    width: 100%;
+}

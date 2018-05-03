@@ -9,7 +9,7 @@
             "category": "Category B"
         },
         {
-            "category_id": 1,
+            "category_id": 3,
             "category": "Essay"
         }
     ]

@@ -3,17 +3,20 @@
         {
             "questionnaire_id": 1,
             "description": "Questionnaire A",
-            "questions_count": 15
+            "questions_count": 15,
+            "date_created": "08-16-2017"
         },
         {
             "questionnaire_id": 2,
             "description": "Questionnaire B",
-            "questions_count": 30
+            "questions_count": 30,
+            "date_created": "02-02-2018"
         },
         {
             "questionnaire_id": 3,
             "description": "Questionnaire C",
-            "questions_count": 20
+            "questions_count": 20,
+            "date_created": "04-15-2018"
         }
     ]
 }
