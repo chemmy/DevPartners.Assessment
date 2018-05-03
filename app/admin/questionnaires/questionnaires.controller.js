@@ -3,8 +3,8 @@
         .module('app.user')
         .controller('QuestionnairesController', QuestionnairesController);
 
-    QuestionnairesController.$inject = ['$scope', '$window', '$ngConfirm', '$filter', 'QuestionnairesService'];
-    function QuestionnairesController($scope, $window, $ngConfirm, $filter, QuestionnairesService) {
+    QuestionnairesController.$inject = ['$scope', '$window', '$ngConfirm', '$filter', 'alert', 'QuestionnairesService'];
+    function QuestionnairesController($scope, $window, $ngConfirm, $filter, alert, QuestionnairesService) {
         var vm = this;
         vm.pageQuestionnaires = [];
         vm.pagination = {
@@ -127,6 +127,7 @@
                         btnClass: 'btn-warning',
                         action: function(scope, button){
                             console.log(vm.questionnaire);
+                            alert.showSuccess("Questionnaire - successfully added!");
                         }
                     }
                 }
