@@ -140,8 +140,13 @@
                         text: 'Save',
                         btnClass: 'btn-warning',
                         action: function(scope, button){
-                            console.log(vm.questionnaire);
-                            alert.showSuccess("Questionnaire - successfully added!");
+                            if (vm.questionnaire.description && vm.questionnaire.questions) {
+                                // save here
+                                console.log(vm.questionnaire);
+                                alert.showSuccess("Questionnaire - successfully added!");
+                            } else {
+                                alert.showWarning("No questions added! Questionnaire not saved.");
+                            }
                         }
                     }
                 }

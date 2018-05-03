@@ -7,7 +7,8 @@
     alert.$inject = ['$ngConfirm'];
     function alert($ngConfirm) {
         var services = {
-            showSuccess: showSuccess
+            showSuccess: showSuccess,
+            showWarning: showWarning
         }
         return services;
 
@@ -19,6 +20,19 @@
                 buttons: {
                     close: {
                         btnClass: 'btn-green'
+                    }
+                }
+            });
+        }
+
+        function showWarning(msg) {
+            $ngConfirm({
+                title: 'Warning!',
+                content: msg,
+                type: 'orange',
+                buttons: {
+                    close: {
+                        btnClass: 'btn-orange'
                     }
                 }
             });
