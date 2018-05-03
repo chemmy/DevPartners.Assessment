@@ -5,6 +5,7 @@
 
         /* cross-application modules */
         'block.exception',
+        'block.alert',
 
         /* third party modules */
         'ui.router',
